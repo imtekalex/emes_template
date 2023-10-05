@@ -1,0 +1,149 @@
+% We hope this template from our Laboratory for Electrical Instrumentation and
+% Embedded Systems serves you well.
+% The main authors of this document are
+% Alexander Richter
+% Till Steinmann
+% Andreas Reichenbach
+
+
+
+% Document settings
+\input{settings+/docclass}
+\input{settings+/settings}  % Custom variables are located in settings+/variables.tex
+
+% -----------------------------------------------------------------------------------
+% Information about the work and the author
+% -----------------------------------------------------------------------------------
+% Author
+\author{Your Name}
+\matrikelnr{1234567}
+
+% -----------------------------------------------------------------------------------
+% English chair and thesis info
+% -----------------------------------------------------------------------------------
+\chair{Laboratory for Electrical Instrumentation and Embedded Systems}
+\institute{Institute of Microsystems Engineering (IMTEK)}
+
+\thesisType{Master's Thesis}
+\thesisTitle{Creation of a \LaTeX~Template for\\Students to use for their Thesis}
+\submitDate{March 10, 2022}
+\editingTime{July 13, 2021 - March 10, 2022}
+
+% Examiners
+\firstExaminer{Prof. Dr. Stefan Rupitsch}
+\firstExaminerChair{Laboratory for Electrical Instrumentation and Embedded Systems 
+                    - IMTEK}
+
+\secondExaminer{Prof. Dr. Max Doe}
+\secondExaminerChair{Laboratory for something - IMTEK}
+
+% Supervisor
+\supervisor{M.Sc. Max Doe}
+\supervisorChair{Laboratory for Electrical Instrumentation and Embedded Systems
+                 - IMTEK}
+
+% -----------------------------------------------------------------------------------
+% German chair and thesis info
+% -----------------------------------------------------------------------------------
+% \chair{Professur für Elektrische Messtechnik und Eingebettete Systeme}
+% \institute{Institut für Mikrosystemtechnik (IMTEK)}
+
+% \thesisType{Master Thesis}
+%\thesisTitle{Erstellung einer \LaTeX~Vorlage für\\
+%             Abschlussabeiten von Studierenden}
+% \submitDate{10. März 2022}
+% \editingTime{13. Juli 2021 - 10. März 2022}
+
+% % Examiners
+% \firstExaminer{Prof. Dr. Stefan Rupitsch}
+% \firstExaminerChair{Professur für Elektrische Messtechnik und Eingebettete Systeme 
+%                     - IMTEK}
+
+% \secondExaminer{Prof. Dr. Max Musterperson}
+% \secondExaminerChair{Professur für irgendwas - IMTEK}
+
+% % Supervisor
+% \supervisor{M.Sc. Max Musterperson}
+% \supervisorChair{Professur für Elektrische Messtechnik und Eingebettete Systeme
+%                  - IMTEK}
+
+% -----------------------------------------------------------------------------------
+% Main document
+% -----------------------------------------------------------------------------------
+\begin{document}
+    % -------------------------------------------------------------------------------
+    % Language settings
+    % -------------------------------------------------------------------------------
+    % The default language is English
+    % \selectlanguage{ngerman}  % Toggle ON/OFF
+
+    % Language-specific settings that change automatically
+    \input{settings+/language}
+
+    % -------------------------------------------------------------------------------
+    % Cover page
+    % -------------------------------------------------------------------------------
+    \input{settings+/front_matter/covers/cover}                     \cleardoublepage
+
+    % -------------------------------------------------------------------------------
+    % Abstract, Zusammenfassung, ToC
+    % Lists: Symbols, Acronyms, Figures, Tables, Codes
+    % -------------------------------------------------------------------------------
+    % Abstract in English and German
+    \pagenumbering{Roman}  % I, II, III..
+    \input{chapters/abstract}                                             \clearpage
+    \input{chapters/zusammenfassung}                                      \clearpage
+
+    % Table of contents
+    \tableofcontents                                                      \clearpage
+
+    % List of Symbols & Acronyms
+    \input{settings+/front_matter/lists&indexes/symbols}                  \clearpage
+    \input{settings+/front_matter/lists&indexes/acronyms}                 \clearpage
+
+    % List of Figures & Tables
+    \input{settings+/front_matter/lists&indexes/figureindex}              \clearpage
+    \input{settings+/front_matter/lists&indexes/tableindex}               \clearpage
+
+    % List of C++,C,Python,... Code listings
+    \input{settings+/front_matter/lists&indexes/codeindex}                \clearpage
+
+    % -------------------------------------------------------------------------------
+    % Main Content
+    % -------------------------------------------------------------------------------
+    % Introduction, Goals of the work, Fundamentals, State of the Art, Content,
+    % Simulation, Real World Experiment, Outlook, Acknowledgements
+    \cleardoublepage
+    \pagenumbering{arabic}  % 1, 2, 3..
+    \input{chapters/introduction}                                         \clearpage
+    \input{chapters/theory}                                               \clearpage
+    \input{chapters/sota}                                                 \clearpage
+    \input{chapters/implementation}                                       \clearpage
+    \input{chapters/experiment}                                           \clearpage
+    \input{chapters/discussion}                                           \clearpage
+    \input{chapters/summary}                                              \clearpage
+    \input{chapters/conclusion}                                           \clearpage
+    \input{chapters/outlook}                                              \clearpage
+    \input{chapters/acknowledgments}                                      \clearpage
+
+    % Bibliography
+    \printbibliography[heading=bibintoc]                            \cleardoublepage
+
+    % -------------------------------------------------------------------------------
+    % Appendix and Glossary
+    % -------------------------------------------------------------------------------
+    \pagenumbering{Alph} % A, B, C..
+
+    % Appendix
+    \input{chapters/appendix}                                             \clearpage
+
+    % print main glossary
+    %       type=main           glossary
+    %       type=symbolslist    list of symbols
+    %       type=acronyms       list of acrononyms
+    \printglossary[type=main]
+
+    % Either print all entries or only used entries for all lists
+    \glsaddallunused
+
+\end{document}

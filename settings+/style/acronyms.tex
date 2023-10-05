@@ -1,0 +1,39 @@
+% Based on entry from Stackexchange
+% https://tex.stackexchange.com/questions/269565/glossaries-how-to-customize-list-of-symbols-with-additional-column-for-units
+%
+% --------------------------------------------------------------------------------
+% Style of the Acronyms List
+% --------------------------------------------------------------------------------
+\newglossarystyle{acrostyle} {
+    %\setglossarystyle{long3col}   % base this style on the list style
+    \renewenvironment{theglossary} {  % Change the table type --> 2 columns
+        \xltabular{\linewidth}{p{0.2\textwidth}X}
+    }{
+        \endxltabular
+    }
+
+    % Change the table header
+    \renewcommand*{\glossaryheader} {
+        \bfseries \acronymstitle{} & \bfseries \acronymsdescription{} \\
+        \hline
+        \endfirsthead
+        \hline\endfoot
+    }
+
+    % \renewcommand*{\glsgroupheading}[1]{}
+
+    \renewcommand*{\glossaryentryfield}[5]{
+        \glstarget{##1}{##2} & \glsentrydesc{##1}\\
+    }
+
+    % \renewcommand*{\glossarysubentryfield}[6]{ 
+    %     &
+    %     \glssubentryitem{##2} 
+    %     \glstarget{##2}{\strut}##4 & ##6\\
+    % }
+ 
+    %*** GROUP SKIP *** 
+    %\renewcommand*{\glsgroupskip}{&\\}% 
+    %\renewcommand*{\glsgroupskip}{\addlinespace}% 
+    %******************
+}

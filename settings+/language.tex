@@ -1,0 +1,21 @@
+% --------------------------------------------------------------------------------
+% Language specific text style
+% --------------------------------------------------------------------------------
+\iflanguage{english}{
+
+    % Style of the beginning of each paragraph
+    % Indentation for English, line skip for German
+    \setlength{\parskip}{0em}
+    \setlength{\parindent}{2em}
+
+}{ % -----------------------------------------------------------------------------
+
+    % Style of the beginning of each paragraph
+    % Indentation for English, line skip for German
+    \setlength{\parskip}{1em}
+    \setlength{\parindent}{0em}
+
+    % Package: siunitx
+    % German uses , as a decimal seperator and . as the thousands separators
+    \sisetup{locale = DE}
+}

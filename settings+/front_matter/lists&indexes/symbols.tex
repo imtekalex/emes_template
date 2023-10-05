@@ -1,0 +1,13 @@
+% --------------------------------------------------------------------------------
+% Language handling
+% --------------------------------------------------------------------------------
+\newcommand{\symbolslisttitle}{\iflanguage{english}{Symbol Definitions}{Symbole}}
+\newcommand{\symbolslistname}{\iflanguage{english}{Symbol}{Symbol}}
+\newcommand{\symbolslistdescription}{\iflanguage{english}{Description}{Beschreibung}}
+\newcommand{\symbolslistunit}{\iflanguage{english}{Unit}{Einheit}}
+
+% Print list of symbols
+    %       type=symbolslist    list of symbols
+    %       type=main           glossary
+    %       type=acronyms       list of acrononyms
+\printglossary[type=symbolslist, style=symbstyle]

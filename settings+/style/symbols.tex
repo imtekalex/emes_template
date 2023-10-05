@@ -1,0 +1,57 @@
+
+% NOT NEEDED? NO CHANGE???
+% \glsenablehyper  % activates hyperlink from symbols and acronyms to glossary (symbols and acronyms list)
+
+
+
+
+% Based on entry from Stackexchange
+% https://tex.stackexchange.com/questions/269565/glossaries-how-to-customize-list-of-symbols-with-additional-column-for-units
+%
+% --------------------------------------------------------------------------------
+% Style of the Symbols List
+% --------------------------------------------------------------------------------
+% Title of Symbols List
+\newglossary[slg]{symbolslist}{syi}{syg}{\symbolslisttitle{}}
+
+% Use addkey because we want three columns
+% It's a mystery, but works 
+\glsaddkey{unit}                    % new key
+    {\glsentrytext{\glslabel}}      % entry text with default value
+    {\glsentryunit}                 % commands which seem only to differ in the 
+                                    % number of upper case letters
+    {\GLsentryunit}
+    {\glsunit}                      % command analogous to \glstext (function for 
+                                    % link text (text produced by \gls{}), 
+                                    % all lower case) 
+    {\Glsunit}                      % command analogous to \Glstext (function for 
+                                    % link text (text produced by \gls{}), 
+                                    % first letter upper case)
+    {\GLSunit}                      % command analogous to \GLStext (function for 
+                                    % link text (text produced by \gls{}), all 
+                                    % upper case)
+
+\makeglossaries  % activate glossaries-package
+
+\newglossarystyle{symbstyle} {
+    \setglossarystyle{long3col}  % base this style on the list style
+    \renewenvironment{theglossary} {
+        % Change the table type --> 3 columns
+        \xltabular{\linewidth}{p{0.2\textwidth}Xp{0.1\textwidth}}
+    }{
+        \endxltabular
+    }
+
+    %  Change the table header / footer
+    \renewcommand*{\glossaryheader} {
+        \bfseries \symbolslistname & \bfseries \symbolslistdescription & \bfseries \symbolslistunit \\
+        \hline \endfirsthead
+        \hline \endfoot
+    }
+
+    % Change the displayed items
+    \renewcommand*{\glossentry}[2] {
+        \glstarget{##1}{\glossentryname{##1}} & \glossentrydesc{##1} & \glsunit{##1} \\
+        %               Symbol                      Description            Unit
+    }
+}

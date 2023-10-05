@@ -1,0 +1,63 @@
+\makeatletter
+% ----------------------------------------------------------------------------
+% Custom Colors (RGB 0-255, rgb 0-1)
+% ----------------------------------------------------------------------------
+\definecolor{dartmouthgreen}{rgb}{0.05, 0.5, 0.06}
+\definecolor{myBlueFaded}{RGB}{80, 127, 186}
+\definecolor{myBlue}{RGB}{42, 93, 156}
+
+% Colors for code listings
+\definecolor{darkgreen}{RGB}{0,100,0}
+\definecolor{steelblue}{rgb}{0.27, 0.51, 0.71}
+
+% ----------------------------------------------------------------------------
+% Shorthands for custom colors and trademarks
+% ----------------------------------------------------------------------------
+\newcommand\red[1]{\textcolor{red}{\textbf{#1}}}
+\newcommand\green[1]{\textcolor{dartmouthgreen}{#1}}
+\newcommand\blue[1]{\textcolor{blue}{#1}}
+\newcommand{\orange}[1]{{\color{orange}#1}}
+
+% Quick access to business symbols via \TReg, \TCop and \TTra
+\def\TReg{\textsuperscript{\tiny{\textregistered}}}
+\def\TCop{\textsuperscript{\textcopyright}}
+\def\TTra{\textsuperscript{\texttrademark}}
+
+% ----------------------------------------------------------------------------
+% Defining variables for cover pages and declaration of independence
+% ----------------------------------------------------------------------------
+% Author
+\newcommand*{\matrikelnr}[1]{\gdef\@matrikelnr{#1}}
+
+% University
+\newcommand*{\uniEn}{Albert-Ludwigs-University Freiburg}
+\newcommand*{\uni}{Albert-Ludwigs-Universität Freiburg}
+\newcommand*{\institute}[1]{\gdef\@institute{#1}}
+\newcommand*{\chair}[1]{\gdef\@chair{#1}}
+
+% Thesis
+\newcommand*{\thesisType}[1]{\gdef\@thesisType{#1}}
+\newcommand*{\thesisTitle}[1]{\gdef\@thesisTitle{#1}}
+\newcommand*{\submitDate}[1]{\gdef\@submitDate{#1}}
+\newcommand*{\editingTime}[1]{\gdef\@editingTime{#1}}
+
+% Examiners
+\newcommand*{\firstExaminer}[1]{\gdef\@firstExaminer{#1}}
+\newcommand*{\firstExaminerChair}[1]{\gdef\@firstExaminerChair{#1}}
+\newcommand*{\secondExaminer}[1]{\gdef\@secondExaminer{#1}}
+\newcommand*{\secondExaminerChair}[1]{\gdef\@secondExaminerChair{#1}}
+
+% Supervisor
+\newcommand*{\supervisor}[1]{\gdef\@supervisor{#1}}
+\newcommand*{\supervisorChair}[1]{\gdef\@supervisorChair{#1}}
+
+% ----------------------------------------------------------------------------
+% ToDo notes
+% ----------------------------------------------------------------------------
+% Let's fix up the ugly spacing of the 'todonotes' package
+\renewcommand{\todo}[2][inline]{%
+    \vspace{2mm}
+    \@todo[#1]{#2}
+    \vspace{-1mm}
+}
+\makeatother

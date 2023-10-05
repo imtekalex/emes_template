@@ -1,0 +1,16 @@
+
+% --------------------------------------------------------------------------------
+% Document Class
+% --------------------------------------------------------------------------------
+% We are using KOMA-Script
+\documentclass[
+    twoside,  % Default value already set????
+    12pt,  % Font size 12pt
+    numbers = noendperiod,  % Remove . in the header of a new chapter
+    chapterprefix = true,
+    bibliography = totoc,  % 
+    % listof=totoc, % Adds "List of Figures / Tables" in the ToC
+    DIV=calc
+] {scrbook}
+
+\usepackage[subpreambles=true]{standalone}

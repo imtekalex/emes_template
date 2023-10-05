@@ -1,0 +1,31 @@
+\documentclass[class=scrbook, crop=false]{standalone}
+\usepackage[subpreambles=true]{standalone}
+\ifstandalone
+    \input{../settings+/settings}
+\fi
+
+% ----------------------------------------------------------------------------
+%                                 Appendix
+% ----------------------------------------------------------------------------
+\begin{document}
+\appendix
+
+\chapter{}
+\addcontentsline{toc}{chapter}{Some Appendix}
+\label{Chapter::Some Appendix}
+Stuff that was not important or too much for the thesis but is still important or complements the presented results.
+
+\section{Section A}
+\label{Section::Some Appendix:Section A}
+
+\subsection{Subsection B}
+\label{Subsection::Some Appendix:Subsection B}
+
+\Blindtext
+\chapter{}
+\addcontentsline{toc}{chapter}{Some Appendix2}
+
+\blindtext
+\Blindtext
+
+\end{document}

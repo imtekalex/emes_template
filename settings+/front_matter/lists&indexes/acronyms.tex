@@ -1,0 +1,11 @@
+% --------------------------------------------------------------------------------
+% Language handling
+% --------------------------------------------------------------------------------
+\newcommand{\acronymsdescription}{\iflanguage{english}{Description}{Beschreibung}}
+\newcommand{\acronymstitle}{\iflanguage{english}{Acronyms}{Akronyme}}
+
+% Print list of acronyms
+%       type=acronyms       list of acrononyms
+%       type=main           glossary
+%       type=symbolslist    list of symbols
+\printglossary[type=\acronymtype, style=acrostyle]

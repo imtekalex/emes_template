@@ -1,0 +1,29 @@
+% Change title for list of listings
+\renewcommand\lstlistlistingname{\listoflistingstitle{}}
+
+% Code highlighting for C++, you can also add others if needed
+\lstset{
+    language=C++,
+    numbers=left,
+    columns=fullflexible,
+    aboveskip=5pt,
+    belowskip=10pt,
+    basicstyle=\small\ttfamily,
+    backgroundcolor=\color{black!5},
+    commentstyle=\color{darkgreen},
+    keywordstyle=\color{blue},
+    stringstyle=\color{gray},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    xleftmargin=16pt,
+    xrightmargin=0pt,
+    framesep=5pt,
+    framerule=3pt,
+    frame=leftline,
+    rulecolor=\color{steelblue},
+    tabsize=2,
+    breaklines=true,
+    breakatwhitespace=true,
+    prebreak={\mbox{$\hookleftarrow$}}
+}

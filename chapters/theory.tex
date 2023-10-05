@@ -1,0 +1,190 @@
+\documentclass[class=scrbook, crop=false]{standalone}
+\usepackage[subpreambles=true]{standalone}
+\ifstandalone
+    \input{../settings+/settings}
+\fi
+
+% ----------------------------------------------------------------------------
+%                               Theoretical Background
+% ----------------------------------------------------------------------------
+\begin{document}
+
+\chapter{Theoretical Background}
+\label{Chapter::Theoretical_Background} % Outline text
+This chapter provides background knowledge to understand the concepts in the thesis.
+
+% Background topics that are necessary to understand your thesis
+\section{Theoretical Topic}
+\label{Section::Theoretical_Topic}
+    Text..
+
+\section{Examples for your document}
+    
+    \subsection{Examble of Glossary}
+    \gls{Biofouling}
+    
+    \subsection{Example of Symbols}
+    Examples of the use of symbols in a document. Symbols and also acronyms are introduced in a table at the begin of the document. To jump to this table, simply click on the symbol or acronym, it provides an hyperlink to the table.\\
+    \gls{symb:height}
+    \gls{symb:energy}
+    \gls{symb:A}
+    \gls{symb:B}
+    \gls{symb:C}
+    \gls{symb:D}
+    \gls{symb:E}
+    \gls{symb:F}
+    \gls{symb:G}
+    \gls{symb:H}
+    \gls{symb:I}
+    \gls{symb:J}
+    \gls{symb:K}
+    \gls{symb:L}
+    \gls{symb:M}
+    \gls{symb:N}
+    \gls{symb:O}
+    \gls{symb:P}
+    \gls{symb:Q}
+    \gls{symb:R}
+    \gls{symb:S}
+    \gls{symb:T}
+    \gls{symb:U}
+    \gls{symb:V}
+    \gls{symb:W}
+    \gls{symb:X}
+    \gls{symb:Y}
+    \gls{symb:Z}
+    
+    \subsection{Example of Acronmys}
+    First use of the Acronym \gls{aA} prints long version with short version in brackets, second and following use will print only the short version: \gls{aA}
+    
+    \subsection{Special characters}
+    Registered: \TReg\\
+    Copyright: \TCop\\
+    Trademark: \TTra\\
+    
+    Großzügig Gréànauôbl Ç.\\
+    !"§/()=?öäüß-.,<>\\
+    
+    \subsection{Example of lists}
+    \begin{itemize}
+      \item List entries start with the \verb|\item| command!
+      \item Individual entries are indicated with a black dot, a so-called bullet.
+      \item The text in the entries may be of any length.
+    \end{itemize}
+    
+    \subsection{blind text}
+    \Blindtext
+    
+    \subsection{Example of an Equation}
+    \begin{equation}
+        \label{eq::Central_Projection}
+            \left[\begin{array}{@{}c@{}} {}^c x_{\overline{p}} \\ {}^c y_{\overline{p}} \\ 1 \end{array} \right] =
+            \underbrace{\left[\begin{array}{cccc}
+                c & 0 & 0 & 0 \\
+                0 & c & 0 & 0 \\
+                0 & 0 & 1 & 0
+            \end{array} \right]}_{\text{projection matrix}}
+            \left[\begin{array}{@{}c@{}} {}^k X_p \\ {}^k Y_p \\ {}^k Z_p \\ 1 \end{array} \right] =
+            \left[\begin{array}{@{}c@{}} c \cdot {}^k X_p \\ c \cdot {}^k Y_p \\ {}^k Z_p \end{array} \right] =
+            \left[\begin{array}{@{}c@{}} c \dfrac{{}^k X_p}{{}^k Z_p} \\ c \dfrac{{}^k Y_p}{{}^k Z_p} \\ 1 \end{array} \right]
+    \end{equation}
+    
+    \subsection{Example of Figure}
+    \begin{figure}[ht]
+            \centering
+            \includegraphics[width=\textwidth]{theory/Pinhole-Camera-Model-Multiple-View-Geometry-in-Computer-Vision.pdf}
+            \caption[Mathematical model of a pinhole camera]{Mathematical model of a pinhole camera \cite{Multiple_View_Geometry_in_Computer_Vision}.}
+            \label{fig::Pinhole_Camera_Model}
+        \end{figure}
+    
+
+    \subsection{Example of Reference}
+    Reference Figure \ref{fig::Pinhole_Camera_Model} and Equation \ref{eq::Central_Projection}.
+    Reference source \cite{3D_introductorytechniques}. Also check out code~\ref{Code:Super Code}.
+
+    \subsection{Example of a table}
+    \begin{table*}[ht]
+        \centering
+        \caption[Datasets for 3D reconstruction]{Datasets for stereoscopic 3D reconstruction with ground-truth information.}
+        \label{Table::Dataset_attributes}
+        \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            ~                        & Dynamic & Truth Type       & Remarks\\
+            \hline
+            \color{blue} Tsukuba      & --      & Manual           & The first data with GT\\
+            \color{orange} Middlebury & --      & Structured Light & Most famous 3D data with GT \\
+            \color{red} Hamlyn        & $X$     & partly available & Robotic surgery\\
+            \color{cyan} Kitti        & $X$     & Lidar            & Autonomous driving\\
+            \color{green} EndoVis     & $X$     & Structured Light & Robotic surgery\\
+            \hline
+        \end{tabular}
+        \begin{tablenotes}
+            \small
+            \item * This is an example footnote for the table.
+        \end{tablenotes}
+    \end{table*}
+
+    \subsection{Example of inserted code}
+    \label{Section::Insert_Code}
+    You can use the package listings to import code directly from files. 
+    \lstinputlisting[language=C++,
+                     caption=Descriptive Caption Text,
+                     label=Code:Super Code]
+    {theory/cuda_example.cu}
+
+    In addition to this, it is also possible to directly input your code in \LaTeX.
+    \begin{lstlisting}[language=C++,
+                       caption=Another Descriptive Caption Text,
+                       label=Code:Super Code2]
+     // Some example
+     callFunction();
+    \end{lstlisting}
+
+    \subsection{Example of ToDo Notes}
+    \label{Section::ToDo}
+    With \verb|\todo{Example ToDo note}| you can define your own ToDo notes.
+    \todo{Example ToDo note}
+
+    We prefer the inline ToDo notes, but you can also use floating ones by using the command \verb|\todo[noinline]{Example ToDo note}|.
+    % \todo[noinline]{Example ToDo note}
+
+    You can add your ToDos to the Table of Contents with \verb|\todototoc|, or you can print a separate list of ToDo notes with \verb|\listoftodos|.
+    If you prefer, you can also just color your text.
+
+    \subsection{Coloring text}
+    \label{Section::Colors}
+    You can color text by using predefined commands such as \verb|\red{text}|.
+    Colors we provide are as follows: \red{red}, \green{green}, \blue{blue}, and \orange{orange}. Also, feel free to make up your own colors and add them to the \verb|settings+/variables.tex| file. This can be done in a few easy steps:
+    \begin{itemize}
+        \item Name a color and define it (see \url{https://latexcolor.com/} for ideas)\\
+              \verb|\definecolor{dollarbill}{rgb}{0.52, 0.73, 0.4}|
+        \item Optional: Create a shorthand command with the new color\\
+              \verb|\newcommand\myColor[1]{\textcolor{dollarbill}{\textbf{#1}}}|
+        \item Done! Color a text with the new color\\
+              \verb|\textcolor{dollarbill}{Text}|\\
+              or via shorthand\\
+              \verb|\myColor{Text}|
+    \end{itemize}
+
+% You can use this to add content for standalone documents if you like
+% In this case we would like to show the references.
+\ifstandalone
+    % Bibliography
+    \printbibliography[heading=bibintoc]                         \cleardoublepage
+
+% ----------------------------------------------------------------------------
+% Appendix and Glossary
+% ----------------------------------------------------------------------------
+%     \pagenumbering{Alph} % A, B, C..
+
+% %     % Appendix
+%     \input{chapters/appendix}                                          \clearpage
+
+% %     % Symbol list also counts as a glossary object
+%     \printglossary[type=main]  % main glossary
+
+% %     % Either print all entries or only used entries for all lists
+%     \glsaddallunused
+\fi
+
+\end{document}
