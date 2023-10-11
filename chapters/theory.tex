@@ -9,6 +9,13 @@
 % ----------------------------------------------------------------------------
 \begin{document}
 
+\ifstandalone
+    \selectlanguage{ngerman}  % Toggle ON/OFF
+
+    % Language-specific settings that change automatically
+    \input{settings+/language}
+\fi
+
 \chapter{Theoretical Background}
 \label{Chapter::Theoretical_Background} % Outline text
 This chapter provides background knowledge to understand the concepts in the thesis.
@@ -24,7 +31,7 @@ This chapter provides background knowledge to understand the concepts in the the
     \gls{Biofouling}
     
     \subsection{Example of Symbols}
-    Examples of the use of symbols in a document. Symbols and also acronyms are introduced in a table at the begin of the document. To jump to this table, simply click on the symbol or acronym, it provides an hyperlink to the table.\\
+    Examples of the use of symbols in a document. Symbols and also acronyms are introduced in a table at the begin of the document. To jump to this table, simply click on the symbol or acronym, it provides a hyperlink to the table.\\
     \gls{symb:height}
     \gls{symb:energy}
     \gls{symb:A}
