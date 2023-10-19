@@ -14,9 +14,9 @@ OUT_DIR=out
 
 all: dir $(PROJNAME).pdf
 
+# Create the output directory.
 dir:
 	mkdir -p $(OUT_DIR)
-	mkdir -p $(OUT_DIR)/chapters
 
 $(PROJNAME).pdf: $(PROJNAME).tex
 	latexmk -outdir=$(OUT_DIR) $<
