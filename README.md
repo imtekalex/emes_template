@@ -11,3 +11,7 @@ https://github.com/imtekalex/emes_template
 
 Special thanks go out to
 Till Steinmann and Andreas Reichenbach
+
+# ToDo:
+% Centralize Language settings so that individual chapters are also built correctly.
+% Speed up build process
