@@ -168,8 +168,15 @@
                 \textbf{\examinerstitle}   & \@firstExaminer,\\
                                            & \@firstExaminerChair\\
                                            & \\
-                                           & \@secondExaminer,\\
-                                           & \@secondExaminerChair\\
+
+                                           \ifdefined \@secondExaminer
+                                               & \@secondExaminer,\\
+                                               & \@secondExaminerChair\\
+                                           \else
+                                               & \\
+                                               & \\
+                                           \fi
+
                                            & \\
                 \textbf{\supervisorstitle} & \@supervisor,\\
                                            & \@supervisorChair\\
