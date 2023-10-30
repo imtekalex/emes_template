@@ -2,7 +2,6 @@
 # Modified by Dogukan Cagatay <dcagatay@gmail.com>
 # Modified by Philipp Jund
 # Modified by Andre Schlegel, October of 2023
-# Modified by L. Läufer
 # Originally from : http://tex.stackexchange.com/a/40759
 
 # Name for your pdf.
@@ -20,7 +19,7 @@ dir:
 	mkdir -p $(OUT_DIR)
 
 $(PROJNAME).pdf: $(PROJNAME).tex
-	latexmk -lualatex -outdir=$(OUT_DIR) $<
+	latexmk -outdir=$(OUT_DIR) $<
 	cp $(OUT_DIR)/$(PROJNAME).pdf $(PROJNAME).pdf
 
 cleanall:
