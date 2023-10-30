@@ -9,9 +9,9 @@
     \newcommand{\coverTitle}        {Submitted to the \uniEn\\
                                      \@institute\\
                                      \@chair}
-    \newcommand{\integrityTitle}    {\@chair\\
+    \newcommand{\integrityTitle}    {\uniEn\\
                                      \@institute\\
-                                     \uniEn}
+                                     \@chair}
 
     \newcommand{\authortitle}       {Author}
     \newcommand{\matriculationnmbr} {Matriculation Number}
@@ -30,6 +30,8 @@
           examination	or assignment, either wholly or excerpts thereof.\\
     }
 
+    \newcommand{\placeDate}         {Place, Date}
+    \newcommand{\signature}         {Signature}
 }{
 
     % ------------------------
@@ -38,9 +40,9 @@
     \newcommand{\coverTitle}        {Vorgelegt an der \uni\\
                                      \@institute\\
                                      \@chair}
-    \newcommand{\integrityTitle}    {\@chair\\
+    \newcommand{\integrityTitle}    {\uni\\
                                      \@institute\\
-                                     \uni}
+                                     \@chair}
 
     \newcommand{\authortitle}       {Autor}
     \newcommand{\matriculationnmbr} {Matrikelnummer}
@@ -59,6 +61,8 @@
         auszugsweise, bereits für eine andere Prüfung angefertigt wurde.\\
     }
 
+    \newcommand{\placeDate}         {Ort, Datum}
+    \newcommand{\signature}         {Unterschrift}
 }
 
 % --------------------------------------------------------------------------------
@@ -149,15 +153,13 @@
 % --------------------------------------------------------------------------------
 \newcommand{\decleration} {
     \begin{titlepage}
-        \newgeometry{left=2.5cm+\theBCOR,right=2.5cm,top=2.7cm,bottom=2.5cm}
+        \newgeometry{left=2.5cm+\theBCOR,right=2.5cm,top=2.5cm,bottom=2.5cm}
         \begin{center}
             \thispagestyle{plain}
 
-            \vskip 1cm
-
             \textbf{\integrityTitle}\\
 
-            \vskip 3cm
+            \vskip 1.5cm
 
             \begin{tabular}{p{3.5cm}p{10cm}}
                 \textbf{\authortitle{}}    & \@author,\\
@@ -166,11 +168,13 @@
                 \textbf{\editingtimetitle} & \@editingTime\\
                                            & \\ 
                 \textbf{\examinerstitle}   & \@firstExaminer,\\
+                                           & \@firstExaminerDepartment\\
                                            & \@firstExaminerChair\\
                                            & \\
 
                                            \ifdefined \@secondExaminer
                                                & \@secondExaminer,\\
+                                               & \@secondExaminerDepartment\\
                                                & \@secondExaminerChair\\
                                            \else
                                                & \\
@@ -179,8 +183,8 @@
 
                                            & \\
                 \textbf{\supervisorstitle} & \@supervisor,\\
+                                           & \@supervisorDepartment\\
                                            & \@supervisorChair\\
-                                           & \\
                                            & \\
                 \textbf{\declarationstitle} \declarationsbody
                                            & \\
@@ -190,7 +194,7 @@
 
             \parbox{0.8\textwidth} {
                 \par\noindent\makebox[5cm]{\hrulefill} \hfill\makebox[5cm]{\hrulefill}%
-                \par\noindent\makebox[5cm][l]{Place, Date} \hfill\makebox[5cm][l]{Signature}%
+                \par\noindent\makebox[5cm][l]{\placeDate} \hfill\makebox[5cm][l]{\signature}%
             }
         \end{center}
     \end{titlepage}
