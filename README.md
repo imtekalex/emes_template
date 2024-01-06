@@ -25,7 +25,6 @@ Till Steinmann and Andreas Reichenbach
 - I am missing a title page or the title on p. 3\
 - P. 3: Centering seems unusual to me, since nothing is centered on the cover (or anywhere else).\
 - S. 3: I would prevent the breaks in the lab names.\
-- Contents, etc.: Capitalization of headings should be consistent (see 2.1 vs. 2.2)\
 - Symbols, etc.: The indentation of the first column compared to the table heading is "distracting".\
 - Figure Index, etc.: Indentation "interferes".\
 - It is at least unusual that there are no page numbers on the first pages of the chapters, although there is normal text. If text, then page number.\
