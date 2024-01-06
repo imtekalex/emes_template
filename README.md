@@ -35,4 +35,3 @@ Till Steinmann and Andreas Reichenbach
 - Bib.: DOI should be at the end without a period.\
 - Glossary: The spaces at "e.g." are inconsistent.\
 - Arabic page numbering usually continues to the end.\
-- Speed up build process\
