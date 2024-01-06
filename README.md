@@ -31,7 +31,6 @@ Till Steinmann and Andreas Reichenbach
 - The chapter name in the header on both pages is also unusual.\
 - Table 2.1: Table entries are not left-aligned only in exceptional cases.\
 - The bibliography is usually placed at the end.\
-- Bib.: There is one space too many in Rupitsch's book title and the capitalization is wrong.\
 - Bibliography: References to books always contain publisher and place.\
 - Bib.: DOI should be at the end without a period.\
 - Glossary: The spaces at "e.g." are inconsistent.\
