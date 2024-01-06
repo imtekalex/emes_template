@@ -17,7 +17,6 @@ Till Steinmann and Andreas Reichenbach
 - Speed up build process\
 - Cover: I would check the margins and the position of the seal and logo against the CD manual again, and the extra margin (BCOR?) on the left looks strange on the screen.\
 - Cover: At least in Chrome the colors of the Unilogo are displayed incorrectly, in Acrobat correctly.\
-- Cover: "their" could also be capitalized.\
 - Cover: I find it unusual that the author's name is the smallest and about in the middle of the page. Suggestion: Name further up\
 - Cover: No typographic separation (other than font size) is unusual. Suggestion: "Master's Thesis" in italics, title in bold.\
 - Page numbering: the first three pages are also numbered in Arabic.\
