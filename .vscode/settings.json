@@ -1,17 +1,26 @@
 {
+    "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build",
     "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.search.rootFiles.include": [
+        "%WORKSPACE_FOLDER%/main.tex"
+    ],
     "latex-workshop.latex.recipes": [
         {
             "name": "latexmk",
             "tools": [
                 "latexmk"
             ]
-        }
+        },
     ],
     "latex-workshop.latex.tools": [
         {
             "name": "latexmk",
             "command": "latexmk",
+            "args": [
+                "-cd",
+                "--output-directory=%WORKSPACE_FOLDER%/build",
+                "%WORKSPACE_FOLDER%/main.tex"
+            ]
         }
-    ]
+    ],
 }
