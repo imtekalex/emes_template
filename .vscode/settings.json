@@ -1,6 +1,7 @@
 {
-    "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build",
     "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.synctex.afterBuild.enabled": true,
+    "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build",
     "latex-workshop.latex.search.rootFiles.include": [
         "%WORKSPACE_FOLDER%/main.tex"
     ],
@@ -8,7 +9,7 @@
         {
             "name": "latexmk",
             "tools": [
-                "latexmk"
+                "latexmk",
             ]
         },
     ],
@@ -18,6 +19,7 @@
             "command": "latexmk",
             "args": [
                 "-cd",
+                "-synctex=1",
                 "--output-directory=%WORKSPACE_FOLDER%/build",
                 "%WORKSPACE_FOLDER%/main.tex"
             ]
