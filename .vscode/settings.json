@@ -20,6 +20,7 @@
             "args": [
                 "-cd",
                 "-synctex=1",
+                "-interaction=nonstopmode",
                 "--output-directory=%WORKSPACE_FOLDER%/build",
                 "%WORKSPACE_FOLDER%/main.tex"
             ]
