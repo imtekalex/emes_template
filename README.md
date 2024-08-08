@@ -1,4 +1,4 @@
-# EMES Template for bachelor or master thesis
+# EMES Template for Bachelor’s or Master’s Thesis
 This template aims to give students a template for their bachelor's or master's thesis.
 
 This template is brought to you by the
