@@ -11,6 +11,27 @@ https://github.com/imtekalex/emes_template
 
 Authors: Alexander Richter, Till Steinmann, Andreas Reichenbach
 
+### Building locally using docker
+In case overleaf isn't available or you want to use a local environment(VSCode, Texstudio, ...),
+you can use the docker image provided here.
+
+1. build the image with `docker build -t emes-latex-builder .`
+2. create a container, mount your working directory in the `/latex` folder of the container:
+
+    `docker create -it -v <path_to_your_thesis>:/latex --name latex-builder emes-latex-builder` 
+3. To compile the thesis run: `docker start -a latex-builder`
+
+> [!TIP]  
+> When using Texstudio input the command from step 3 as an user command under  
+> Options -> Configure -> Build -> User Commands  
+> You can then run it with `Alt + Shift + F1`
+
+> [!WARNING]  
+> The official Arial fonts can only be installed with some detour.
+> Replacement fonts are installed in the container. Change the font
+> in `settings+/settings.tex` to `Liberation Sans` or `Liberation Serif`.
+> Otherwise you get compilation errors. See [wiki](https://en.wikipedia.org/wiki/Liberation_fonts) for details.
+
 # ToDo:
 - Centralize Language settings so that individual chapters are also built correctly.
 - Speed up build process
