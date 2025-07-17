@@ -1,29 +1,29 @@
 % Change title for list of listings
 \renewcommand\lstlistlistingname{\listoflistingstitle{}}
 
-% Code highlighting for C++, you can also add others if needed
+% Code highlighting for C++
 \lstset{
     language=C++,
-    numbers=left,
-    columns=fullflexible,
-    aboveskip=5pt,
-    belowskip=10pt,
-    basicstyle=\small\ttfamily,
-    backgroundcolor=\color{black!5},
-    commentstyle=\color{darkgreen},
-    keywordstyle=\color{blue},
-    stringstyle=\color{gray},
-    showspaces=false,
-    showstringspaces=false,
-    showtabs=false,
-    xleftmargin=16pt,
-    xrightmargin=0pt,
-    framesep=5pt,
-    framerule=3pt,
-    frame=leftline,
-    rulecolor=\color{steelblue},
-    tabsize=2,
-    breaklines=true,
-    breakatwhitespace=true,
-    prebreak={\mbox{$\hookleftarrow$}}
+    numbers=left,                      % Add line numbers
+    columns=fullflexible,              % Flexible spacing for monospaced text
+    aboveskip=5pt,                     % Space above the code block
+    belowskip=10pt,                    % Space below the code block
+    basicstyle=\small\ttfamily,        % Font size and type for the code
+    backgroundcolor=\color{black!5},   % Light gray background
+    commentstyle=\color{darkgreen},    % Color for comments
+    keywordstyle=\color{blue},         % Color for keywords
+    stringstyle=\color{gray},          % Color for strings
+    showspaces=false,                  % Don't show spaces
+    showstringspaces=false,            % Don't show spaces in strings
+    showtabs=false,                    % Don't show tabs
+    xleftmargin=16pt,                  % Left margin for the code block
+    xrightmargin=0pt,                  % Right margin for the code block
+    framesep=5pt,                      % Padding between text and frame
+    framerule=3pt,                     % Thickness of the frame line
+    frame=leftline,                    % Draw a vertical line on the left
+    rulecolor=\color{steelblue},       % Color for the frame line
+    tabsize=2,                         % Tab width
+    breaklines=true,                   % Allow line breaking
+    breakatwhitespace=true,            % Break lines at whitespace
+    prebreak={\mbox{$\hookleftarrow$}} % Symbol to indicate broken lines
 }
