@@ -21,8 +21,10 @@
 \label{Section::Problem_and_Research_Questions}
     \Blindtext
 
+% You can use this to add content for standalone documents if you like
+% In this case, we would like to show the acronyms and references.
 \ifstandalone
-    \printglossary
+    \printnoidxglossary[type=\acronymtype]
     \printbibliography[heading=bibintoc]
 \fi
 

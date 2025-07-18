@@ -31,7 +31,11 @@
                                     % link text (text produced by \gls{}), all 
                                     % upper case)
 
-\makeglossaries  % activate glossaries-package
+\ifstandalone
+    \makenoidxglossaries 
+\else
+    \makeglossaries  % activate glossaries-package
+\fi
 
 \newglossarystyle{symbstyle} {
     \setglossarystyle{long3col}  % base this style on the list style
