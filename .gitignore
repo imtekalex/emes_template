@@ -1,3 +1,6 @@
+# Ignore everything in build
+build/
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
