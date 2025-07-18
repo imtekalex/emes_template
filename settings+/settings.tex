@@ -1,232 +1,147 @@
-% WARNING: Proceed with caution!
+% ---------------------------------------------------------------------
+% File Import Support
+% ---------------------------------------------------------------------
+\usepackage{import} % Enables relative path imports for modular document structure.
 
-% -----------------------------------------------------------------------------------
-% For package standalone
-% -----------------------------------------------------------------------------------
-\usepackage{import}
+% ---------------------------------------------------------------------
+% Language and Character Encoding
+% ---------------------------------------------------------------------
+\usepackage[ngerman, english]{babel} % Set document languages: German + English.
 
-% -----------------------------------------------------------------------------------
-% Language and typeset
-% -----------------------------------------------------------------------------------
-\usepackage[ngerman, english]{babel}
+% ---------------------------------------------------------------------
+% Font Configuration — LuaLaTeX Only
+% ---------------------------------------------------------------------
+% LuaLaTeX handles UTF-8 input natively — inputenc and fontenc are obsolete here.
 
-% Umlauts and other special characters (UTF-8)
-% \usepackage[utf8]{inputenc}
-\usepackage{fontspec}
-\setsansfont{Arial}
-% \usepackage[T1]{fontenc}  % Enable accented characters and umlauts
-% LuaLatex doesn't need fontenc and uses UTF-8
-% \usepackage{lmodern}  % Font face
+\usepackage{lmodern}   % Default serif/monospace fallback fonts.
+\usepackage{fontspec}  % Primary font package for LuaLaTeX.
+\setsansfont{Arial}    % Set sans-serif font to Arial (main font for this document).
 
+% Notes:
+% - lmodern fills in main and monospace fonts if not explicitly set with fontspec.
+% - Comment lmodern if full fontspec control is preferred.
 
-% --------------------------------------------------------------------------------
-% Page formatting
-% --------------------------------------------------------------------------------
-% Change the header/footer for chapter beginnings and normal pages
-\usepackage[automark,headsepline]{scrlayer-scrpage}
+% ---------------------------------------------------------------------
+% Page Layout and Formatting
+% ---------------------------------------------------------------------
+\usepackage[automark,headsepline]{scrlayer-scrpage} % Header/footer management.
 
-% The package provides an easy and flexible user interface to customize the page
-% layout, implementing auto-centering and auto-balancing mechanisms
-% WARNING: WHEN CHANGING BCOR (Binding correction), the cover needs reworking!...
-\newcommand{\theBCOR}{15mm}  % Define binding correction
+\newcommand{\theBCOR}{15mm} % Binding correction for double-sided print layouts.
+
 \usepackage[
     bindingoffset=\theBCOR,
-    % showframe, % Show boxes which indicate margins and paddings
-    bottom = 3.5cm, % Margins
-      left = 2.5cm,
-     right = 2.5cm
-] {geometry}
+    bottom = 3.5cm,
+    left = 2.5cm,
+    right = 2.5cm
+]{geometry} % Custom page dimensions.
 
-% The package 'float' provides a container for document objects which can not be
-% broken over pages, such as tables and figures
-% Needed for table and figure indexes  
-\usepackage{float}
+\usepackage{float}          % Prevent page breaks inside figures/tables.
+\usepackage{pdflscape}      % Landscape page support.
+\usepackage{threeparttable} % Table notes support.
+\usepackage{booktabs}       % Improved table rules and spacing.
 
-% support for landscape layout
-\usepackage{lscape}
+% ---------------------------------------------------------------------
+% Content Presentation
+% ---------------------------------------------------------------------
+\usepackage{tikz}          % Graphics and diagrams.
+\usepackage{graphicx}      % Image inclusion.
 
-% support of \tablenotes command to add notes under table
-\usepackage{threeparttable}
+\addtokomafont{disposition}{\rmfamily} % Roman font for all section headings.
 
-% To allow drawing more professional tables
-\usepackage{booktabs}
+\usepackage[onehalfspacing]{setspace}  % Line spacing: 1.5x for readability.
 
-% --------------------------------------------------------------------------------
-% Contents
-% --------------------------------------------------------------------------------
-% Vector graphics (for Cover page)
-\usepackage{tikz} 
+\usepackage[stretch=10]{microtype}     % Typographic optimizations.
+% Disable expansion if font glitches occur:
+% \usepackage[stretch=10, expansion=false]{microtype}
 
-% Allows additional parameters when including images
-\usepackage{graphicx}
+\usepackage{textcomp}      % Access to symbols like \textmu (µ).
 
-% Roman font family for all headings
-\addtokomafont{disposition}{\rmfamily}
-
-% Set the line spacing to 1.5
-\usepackage[onehalfspacing]{setspace}
-
-% Improves overall text spacing
-% http://www.khirevich.com/latex/microtype/
-\usepackage[stretch=10]{microtype}
-
-% Math symbols like mu outside the math environment
-\usepackage{textcomp}
-
-% A comprehensive (SI) units package∗
-% For defining SI units
 \usepackage[
-    range-units=single,         % Formatting ranges with single unit indication: 1 - 2 m
-    range-phrase=-,             % Phrase for range: 1 - 2 m vs 1 to 2 m
-    separate-uncertainty=true,  % sets +- between value and uncertainty 
-    multi-part-units=repeat     % In expressions with multiple values (multi part numbers) 
-                                % the unit is printed each time: 1 mm x 1 mm
-] {siunitx}
-% https://tex.stackexchange.com/questions/124488/multi-part-numbers-and-units-in-siunitx
+    range-units=single,
+    range-phrase=-,
+    separate-uncertainty=true,
+    multi-part-units=repeat
+]{siunitx} % Scientific units, uncertainty handling.
 
-% Allows Sourcecodes with highlighting 
-\usepackage{listings}
+\usepackage{listings}      % Source code formatting.
+\usepackage{enumitem}      % Fine-tune list spacing and indentation.
+\setlist{nosep}
 
-% This package provides user control over the layout of the three basic list
-% environments: enumerate, itemize and description
-\usepackage{enumitem}
-\setlist{nosep} % Remove the vertical space between \item elements in all lists
-
-% ToDo Notes
-% \setlength{\marginparwidth}{2cm}
-\usepackage{todonotes}
+\usepackage{todonotes}     % Inline ToDo notes.
 \setuptodonotes{inline, inlinepar}
-\reversemarginpar  % Put ToDo notes on the binding's side
-% \usepackage{soul} % Colorful ToDo notes
+\reversemarginpar          % Place ToDo notes in the left margin.
+% Adjust margin width if notes overflow:
+% \setlength{\marginparwidth}{2cm}
 
-% Check out colors here http://latexcolor.com/
-\usepackage{xcolor}
+\usepackage{xcolor}        % Color customization support.
+\usepackage{amsmath}       % Math typesetting.
 
-\usepackage{amsmath}    % alignment of equations
+% ---------------------------------------------------------------------
+% Utility Packages
+% ---------------------------------------------------------------------
+\usepackage{blindtext}     % Filler text for layout development.
+\usepackage[hidelinks]{hyperref} % Hide link borders in PDF output.
 
-% --------------------------------------------------------------------------------
-% Other elements
-% --------------------------------------------------------------------------------
-% Blindtext: Organic looking text dummy
-\usepackage{blindtext}
+% ---------------------------------------------------------------------
+% Glossary and Index
+% ---------------------------------------------------------------------
+% IMPORTANT: Version pin required for compatibility.
+\usepackage[acronym, nogroupskip]{glossaries}[=v4.49]
+\usepackage{xltabular}     % Required table layout extension for glossaries.
 
-% Hyperlinks within the document (PDF)
-% "hidelinks" hides visual highlighting of links
-\usepackage[hidelinks]{hyperref}
-
-% Package for Glossary and Index (Acronyms are listed in a separate list) 
-\usepackage[acronym, nogroupskip]{glossaries}[=v4.49] % groupskip: alphabetic grouping of entries
-
-\usepackage{xltabular}   % <------- FOR glossaries
-
-% Integration and management of bibliographies
-\usepackage{csquotes}   % backend=biber in biblatex needs this package
+% ---------------------------------------------------------------------
+% Bibliography Configuration
+% ---------------------------------------------------------------------
+\usepackage{csquotes}      % Quotation style integration.
 \usepackage[
-    style=ieee,   % style of the bibliography, entries are sorted in alphabetic order. "ieee" is another common style.
-    backend=biber,      % based on package 'biber' 
-    bibencoding=ascii   % ASCII Text encoding; may use "utf8" instead
-] {biblatex}
+    style=ieee,
+    backend=biber,
+    bibencoding=ascii
+]{biblatex}
 
-% --------------------------------------------------------------------------------
-%                               PATHS & FILES
-% --------------------------------------------------------------------------------
-% Fix paths for standalone compiling
+% ---------------------------------------------------------------------
+% Paths and Included Files
+% ---------------------------------------------------------------------
 \ifstandalone
     \def \home {..}
 \else
     \def \home {.}
 \fi
 
-% Package: scrlayer-scrpage
-% \def \stylePath {\home/settings+/style/page}
-\input{\home/settings+/style/page}  % Load page style
+\input{\home/settings+/style/page}     % Page style configuration.
+\graphicspath{{\home/images/}}         % Default image path.
 
-% Package: graphicx
-\graphicspath{{\home/images/}}  % Set path to images
+\input{\home/settings+/style/code.tex} % Code listings style.
+\lstset{inputpath={\home/code/}}       % Default path for listings files.
 
-% Package: listings
-\input{\home/settings+/style/code.tex}  % Set path to style file
-\lstset{inputpath={\home/code/}} % Default path to code listings
+\input{\home/settings+/style/symbols}  
+\input{\home/settings+/style/acronyms}
+\input{\home/references/glossary_acronyms}
 
-% Package: glossaries
-\input{\home/settings+/style/symbols}  % Set path to symbols list style file
-\input{\home/settings+/style/acronyms}  % Set path to acronym list style file
-\input{\home/references/glossary_acronyms}  % Load glossary, symbol and acronyms list
-
-% Package: biblatex
-\addbibresource{\home/references/references.bib}  % Set path to bib resources
-
-% Custom variables
+\addbibresource{\home/references/references.bib}
 \input{\home/settings+/variables}
-% --------------------------------------------------------------------------------
-%                                   OPTIONAL
-% --------------------------------------------------------------------------------
 
+\usepackage[listings=false]{scrhack} % Compatibility fix for older packages.
 
-% Simple arithmetic for LaTeX commands
-% \usepackage{calc}
-
-% Document Elements
-% -------------------
-
-% Index
-% \usepackage{imakeidx}
-
-% compact Lists
-%\usepackage{paralist}
-
-% visual improvements for citations
-% \usepackage{epigraph}
-
-% Create pseudo code
-% https://www.overleaf.com/learn/latex/Algorithms
-% \usepackage{algorithm}
-% \usepackage{algorithmic}
-%\usepackage[noend]{algpseudocode}
-
-% Formatting
-% -------------------
-% Tweaks for scrbook, redefines commands of other packages
-% \usepackage{scrhack}
-
-% Intelligent space separator (nice for superscript?)
-% \usepackage{xspace}
-
-% Allows breaks within tables
-%\usepackage{tabularx}
-
-% Allows for page breaks in tables
-% \usepackage{longtable}
-
-% allows modifying of captions
-% \usepackage{caption}
-
-% Multiline comments
-%\usepackage{verbatim}
-
-% % Custom colors
+% ---------------------------------------------------------------------
+% Optional Packages — Uncomment As Needed
+% ---------------------------------------------------------------------
+% \usepackage{calc}          % Arithmetic with LaTeX lengths.
+% \usepackage{imakeidx}      % Index creation.
+% \usepackage{paralist}      % Compact lists.
+% \usepackage{epigraph}      % Quotation formatting.
+% \usepackage{algorithm}     % Algorithms (floating).
+% \usepackage{algpseudocode} % Pseudocode formatting.
+% \usepackage{algorithmic}   % Legacy pseudocode.
+% \usepackage{xspace}        % Smart space insertion.
+% \usepackage{tabularx}      % Flexible table widths.
+% \usepackage{longtable}     % Multipage tables.
+% \usepackage{caption}       % Caption customization.
+% \usepackage{verbatim}      % Multiline comments.
 % \definecolor{dartmouthgreen}{rgb}{0.05, 0.5, 0.06}
-
-% IF you want to define unicode characters
 % \DeclareUnicodeCharacter{0229}{\c{e}}
 % \DeclareUnicodeCharacter{0306}{\u{Z}}
-
-
-% Document elements
-% ------------------------------------
-
-% Table package
-% \usepackage{booktabs}
-
-% Pie diagram
-% \usepackage{datapie}
-
-% Side by Side images
-% \usepackage{subcaption}
-
-% For landscape tables
-%\usepackage{pdflscape}
-%\usepackage{afterpage}
-
-% Graphics can be flow around by text
-%\usepackage{wrapfig}
+% \usepackage{datapie}       % Pie charts.
+% \usepackage{subcaption}    % Subfigures.
+% \usepackage{afterpage}     % Command placement after page breaks.
+% \usepackage{wrapfig}       % Text wrapping around figures.
