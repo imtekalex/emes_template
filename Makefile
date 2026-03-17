@@ -34,6 +34,6 @@ clean: | dir
 
 # Remove everything generated (OUT_DIR + copied PDF)
 cleanall:
-	$(LATEXMK) -outdir="$(OUT_DIR)" -C 2>/dev/null || true
+	-$(LATEXMK) -outdir="$(OUT_DIR)" -C
 	@rm -rf "$(OUT_DIR)"
 	@rm -f "$(PROJNAME).pdf"
