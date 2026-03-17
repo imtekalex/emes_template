@@ -1,30 +1,39 @@
-# Latex Makefile using latexmk
-# Modified by Dogukan Cagatay <dcagatay@gmail.com>
-# Modified by Philipp Jund
-# Modified by Andre Schlegel, October of 2023
-# Originally from : http://tex.stackexchange.com/a/40759
+# LaTeX Makefile using latexmk
+# Builds $(PROJNAME).pdf in project root, with intermediates in $(OUT_DIR)
+#
+# Originally from: https://tex.stackexchange.com/a/40759
+# Based on a Makefile with contributions by:
+#   - Dogukan Cagatay <dcagatay@gmail.com>
+#   - Philipp Jund
+#   - Andre Schlegel (October 2023)
+#
+# Thanks to the authors and contributors for sharing.
 
-# Name for your pdf.
-PROJNAME=main
+PROJNAME := main
+OUT_DIR  := out
 
-# Name for your output folder, containing all generated latex files. Note: The generated pdf will be copied into the project folder for easier access.
-OUT_DIR=out
+LATEXMK  := latexmk
+LATEXMK_FLAGS := -pdf -interaction=nonstopmode -halt-on-error -outdir=$(OUT_DIR)
 
-.PHONY: $(PROJNAME).pdf all clean
+.PHONY: all dir clean cleanall
 
-all: dir $(PROJNAME).pdf
+all: $(PROJNAME).pdf
 
-# Create the output directory.
+# Ensure output directory exists
 dir:
-	mkdir -p $(OUT_DIR)
+	@mkdir -p "$(OUT_DIR)"
 
-$(PROJNAME).pdf: $(PROJNAME).tex
-	latexmk -outdir=$(OUT_DIR) $<
-	cp $(OUT_DIR)/$(PROJNAME).pdf $(PROJNAME).pdf
+# Build PDF
+$(PROJNAME).pdf: $(PROJNAME).tex | dir
+	$(LATEXMK) $(LATEXMK_FLAGS) $<
+	@cp "$(OUT_DIR)/$(PROJNAME).pdf" "$(PROJNAME).pdf"
 
+# Remove latexmk temporary files in OUT_DIR (keeps PDFs)
+clean: | dir
+	$(LATEXMK) -outdir="$(OUT_DIR)" -c
+
+# Remove everything generated (OUT_DIR + copied PDF)
 cleanall:
-	rm -rf $(OUT_DIR)/*
-
-# Deletes temporary files in the output folder.
-clean:
-	latexmk -outdir=$(OUT_DIR)/ -c
+	$(LATEXMK) -outdir="$(OUT_DIR)" -C 2>/dev/null || true
+	@rm -rf "$(OUT_DIR)"
+	@rm -f "$(PROJNAME).pdf"
