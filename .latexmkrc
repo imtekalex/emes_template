@@ -1,14 +1,39 @@
-# The corresponding file used by `Overleaf` in: https://www.overleaf.com/latex/templates/emes-vorlage-abschlussarbeiten/cwjcytntgxtg
-# Modified by Andre Schlegel, October of 2023
+# LaTeX build configuration for latexmk
+# Supports local builds with repository-local cache/output handling
+#
+# Originally based on the .latexmkrc in the Overleaf template:
+# https://www.overleaf.com/latex/templates/emes-vorlage-abschlussarbeiten/cwjcytntgxtg
+#
+# Thanks to the authors and contributors for sharing:
+#   - Andre Schlegel
+#   - Jonas Kelinger
 
 # Settings
 $xdvipdfmx = "xdvipdfmx -z 6 -i dvipdfmx-unsafe.cfg -o %D %O %S";
 
-# Workaround to allow pstricks transparency (https://github.com/overleaf/issues/issues/3449)
+# Workaround to allow pstricks transparency
+# https://github.com/overleaf/issues/issues/3449
 $dvipdf = "dvipdf -dNOSAFER -dALLOWPSTRANSPARENCY %O %S %D";
 
-# Set the typesetting system to lualatex
+# Keep TeX-generated cache/variable files inside the repository.
+# Helps avoid permission issues in editor-launched or restricted environments.
+$ENV{'TEXMFVAR'} = './texmf-var';
+
+# Set the typesetting system to LuaLaTeX and always emit SyncTeX data.
 $pdf_mode = 4;
+$pdflatex = 'lualatex -synctex=1 %O %S';
+$latex    = $pdflatex;
+$synctex  = 1;
+
+# Optional macOS PATH fix for GUI-launched editors such as VS Code from the Dock.
+# This is intentionally limited to macOS and does not affect Linux/Windows.
+if ($^O eq 'darwin') {
+    $ENV{'PATH'} = join(':',
+        '/opt/homebrew/bin',
+        '/Library/TeX/texbin',
+        $ENV{'PATH'}
+    );
+}
 
 ###############################
 # Post processing of pdf file #
@@ -25,7 +50,7 @@ sub overleaf_pre_process {
     my $output_file = $_[1];
 
     # get age of existing pdf if present
-    $ORIG_PDF_AGE = -M $output_file
+    $ORIG_PDF_AGE = -M $output_file;
 }
 
 sub overleaf_post_process {
@@ -75,16 +100,17 @@ sub overleaf_post_process {
 ##############
 # Glossaries #
 ##############
-# This part had to be changed from the original `Overleaf` file, because it didn't support the output directory parameter.
-add_cus_dep( 'acn', 'acr', 0, 'makeglossaries' );
-add_cus_dep( 'glo', 'gls', 0, 'makeglossaries' );
+# This part had to be changed from the original `Overleaf` file,
+# because it didn't support the output directory parameter.
+add_cus_dep('acn', 'acr', 0, 'makeglossaries');
+add_cus_dep('glo', 'gls', 0, 'makeglossaries');
 $clean_ext .= " acr acn alg glo gls glg";
 
 sub makeglossaries {
-    my ($base_name, $path) = fileparse( $_[0] );
-    my @args = ( "-q", "-d", $path, $base_name );
+    my ($base_name, $path) = fileparse($_[0]);
+    my @args = ("-q", "-d", $path, $base_name);
     if ($silent) { unshift @args, "-q"; }
-    return system "makeglossaries", "-d", $path, $base_name; 
+    return system "makeglossaries", "-d", $path, $base_name;
 }
 
 #############
@@ -100,14 +126,14 @@ if (scalar(@ist) > 0) {
 ################
 add_cus_dep("nlo", "nls", 0, "nlo2nls");
 sub nlo2nls {
-        system("makeindex $_[0].nlo -s nomencl.ist -o $_[0].nls -t $_[0].nlg");
+    system("makeindex $_[0].nlo -s nomencl.ist -o $_[0].nls -t $_[0].nlg");
 }
 
 #########
 # Knitr #
 #########
-add_cus_dep( 'Rtex', 'tex', 0, 'do_knitr');
-add_cus_dep( 'Rnw', 'tex', 0, 'do_knitr');
+add_cus_dep('Rtex', 'tex', 0, 'do_knitr');
+add_cus_dep('Rnw', 'tex', 0, 'do_knitr');
 sub do_knitr {
     Run_subst(qq{Rscript -e '
         library("knitr");
@@ -157,11 +183,10 @@ sub mp_to_eps {
 #############
 # asymptote #
 #############
-
-sub asy {return system("asy \"$_[0]\"");}
-add_cus_dep("asy","eps",0,"asy");
-add_cus_dep("asy","pdf",0,"asy");
-add_cus_dep("asy","tex",0,"asy");
+sub asy { return system("asy \"$_[0]\""); }
+add_cus_dep("asy", "eps", 0, "asy");
+add_cus_dep("asy", "pdf", 0, "asy");
+add_cus_dep("asy", "tex", 0, "asy");
 
 #############
 # metapost  #  # from Overleaf v1
@@ -193,14 +218,15 @@ if (defined $ENV{'CHKTEX_OPTIONS'}) {
         my $orig_dir = cwd();
         my $subdir = dirname($target);
         chdir($subdir);
+
         # run chktex on main file
         $status = system("/usr/local/bin/run-chktex.sh", $orig_dir, $file);
+
         # go back to original directory
         chdir($orig_dir);
 
         # in VALIDATE mode we always exit after running chktex
         # otherwise we exit if EXIT_ON_ERROR is set
-
         if ($ENV{'CHKTEX_EXIT_ON_ERROR'} || $ENV{'CHKTEX_VALIDATE'}) {
             # chktex doesn't let us access the error info via exit status
             # so look through the output
@@ -208,7 +234,7 @@ if (defined $ENV{'CHKTEX_OPTIONS'}) {
             my $errors = 0;
             {
                 local $/ = "\n";
-                while(<$fh>) {
+                while (<$fh>) {
                     if (/^\S+:\d+:\d+: Error:/) {
                         $errors++;
                         print;
