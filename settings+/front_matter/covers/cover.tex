@@ -71,80 +71,76 @@
 \renewcommand*{\maketitle} {
 
     \begin{titlepage}
-
+    
         \newgeometry{left=2.5cm,right=2.5cm-1cm,top=2.5cm,bottom=1.5cm}
         \newcommand{\fold}{1cm}  % Define the size of glue fold
+        
+        % ------------------------------------------------------------------------
+        % Centered Text Block
+        % ------------------------------------------------------------------------
+        \begin{center}
+        
+        \parindent0pt
+        \setstretch{1.2} % slightly tighter for the list of names
+
+        % 1. Thesis Type (Centered)
+        \vspace*{0.5cm} % Small top padding
+        \fontsize{24}{24}\sffamily
+        \@thesisType\\[2.2cm]
+        
+        % 2. Thesis Title (Centered)
+        \fontsize{30}{30}\sffamily
+        \@thesisTitle\\[3.5cm] % Adjusted gap to make room for larger name section
+        
+        % 3. Author Name (Centered, Larger, at requested height)
+        \fontsize{20}{24}\sffamily
+        \Huge \@author\\[1.5cm]
+        
+        % 4. Examiner and Advisor (Centered, below name)
+        \begin{tabular}[hc]{>{\huge}l >{\huge}l}
+        Examiner: & \@firstExaminer \\[0.3cm]
+        Supervisor: & \@supervisor \\[1.2cm]
+        \end{tabular}
+
+        % 5. Date (After Chair Name)
+        \Large \@submitDate
+        
+        \end{center}
 
         % ------------------------------------------------------------------------
-        % Text
+        % TikZ Picture: Underlays and Logos
         % ------------------------------------------------------------------------
-        % \begin{center}
-
-            \parindent0pt
-            \setstretch{1.6}
-            \fontsize{24}{24}\sffamily
-                \@thesisType\\[2.2cm]
-
-            \fontsize{30}{30}\sffamily
-                \@thesisTitle\\[2.9cm]
-
-            \fontsize{14}{14}\sffamily
-                \@author\\[0.3cm]
-                \@submitDate\\
-
-        % \end{center}
-
-        % Footer moved from bottom of page to allow dynamic header size
         \begin{tikzpicture}[remember picture,overlay]
-            \node[yshift=6cm, font=\fontsize{16}{16}\sffamily, % xshift=\fold,
-                  align=left] at (current page.south) {
-                \coverTitle
-            };
+        
+        % Four corner points of margins (Defining relative coordinates)
+        \coordinate (TL) at ([xshift=\fold + \theBCOR, yshift=-\theBCOR] current page.north west);
+        \coordinate (TR) at ([xshift=      - \theBCOR, yshift=-\theBCOR] current page.north east);
+        \coordinate (BR) at ([xshift=      - \theBCOR, yshift= \theBCOR] current page.south east);
+        \coordinate (BL) at ([xshift=\fold + \theBCOR, yshift= \theBCOR] current page.south west);
+        
+        % Layout content: University Seal (Watermark)
+        \node[opacity=0.05, anchor=north, xshift = 3.4cm, yshift = 2mm] at (TL) {
+            \includegraphics[height=0.675\paperheight]{cover/Uni_Siegel.pdf}
+        };
+
+        \node[anchor=south west, align=left, font=\normalsize\sffamily, 
+          xshift=5mm, yshift=2cm] at (BL) {
+            \coverTitle
+        };
+        
+        % IMTEK Logo (Bottom Left - Uncommented)
+        % Note: Adjusting xshift/yshift to push it into the corner nicely
+        \node[anchor=south west, xshift = 5mm, yshift = -2mm] at (BL) {
+            \includegraphics[height=1.5cm, keepaspectratio]{images/cover/Logo_IMTEK.png} % Ensure filename matches your file
+        };
+
+        % University Logo (Bottom Right)
+        \node[anchor=south east, xshift = -1mm, yshift = -2mm] at (BR) {
+            \includegraphics[width=0.5\textwidth]{images/cover/Logo_Uni.pdf}
+        };
+        
         \end{tikzpicture}
-
-        % ------------------------------------------------------------------------
-        % University seal and logo. 
-        % ------------------------------------------------------------------------
-        \begin{tikzpicture}[remember picture,overlay]
-
-            % Four corner points of margins
-            \coordinate (TL) at ([xshift=\fold + \theBCOR, yshift=-\theBCOR] current page.north west);
-            \coordinate (TR) at ([xshift=      - \theBCOR, yshift=-\theBCOR] current page.north east);
-            \coordinate (BR) at ([xshift=      - \theBCOR, yshift= \theBCOR] current page.south east);
-            \coordinate (BL) at ([xshift=\fold + \theBCOR, yshift= \theBCOR] current page.south west);
-
-            % % Layout template
-            % \node[opacity=0.5, anchor=north west, xshift=\fold, yshift=0.5mm] at (current page.north west) {
-            %     \includegraphics[width=\paperwidth-\fold-3mm, height=\paperheight-2mm]{images/cover/vorlage_layout.png}
-            % };
-
-            % % Glue fold
-            % \node [anchor=north west,minimum width=1cm,minimum height=\paperheight, fill=black!25!white] (rect) at (current page.north west) {};
-
-            % % Margin indicators 
-            % \draw[blue!70!black,line width=1mm] ([yshift=-1cm]TL) -- (TL) -- ([xshift=+1cm]TL);
-            % \draw[blue!70!black,line width=1mm] ([xshift=-1cm]TR) -- (TR) -- ([yshift=-1cm]TR);
-            % \draw[blue!70!black,line width=1mm] ([yshift=+1cm]BR) -- (BR) -- ([xshift=-1cm]BR);
-            % \draw[blue!70!black,line width=1mm] ([xshift=+1cm]BL) -- (BL) -- ([yshift=+1cm]BL);
-            % \draw[blue!70!black,line width=0.1mm] (TL) -- (TR) -- (BR) -- (BL) -- (TL);
-
-            % Layout content 0.075
-            \node[opacity=0.05, anchor=north, xshift = 3.4cm, yshift = 2mm] at (TL) {
-                \includegraphics[height=0.675\paperheight]{cover/Uni_Siegel.pdf}
-            };
-
-            % \node[anchor=south west, xshift = -1mm, yshift = -1mm] at (BL) {
-            %     \includegraphics[height=1.5cm]{cover/Logo_IMTEK.png}
-            % };
-
-            \node[anchor=south east, xshift = 1mm, yshift = -1.75mm] at (BR) {
-                \includegraphics[width=0.5\textwidth]{images/cover/Logo_Uni.pdf}
-            };
-
-            \node[anchor=north] at (current page.north) {};
-
-        \end{tikzpicture}
-
+    
     \end{titlepage}
 }
 
