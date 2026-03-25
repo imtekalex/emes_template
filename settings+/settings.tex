@@ -15,8 +15,15 @@
 
 \usepackage{lmodern}   % Default serif/monospace fallback fonts.
 \usepackage{fontspec}  % Primary font package for LuaLaTeX.
-\setsansfont{Arial}    % Set sans-serif font to Arial (main font for this document).
-
+% Logic: Check if "Arial" exists.
+% If true, set it as main font.
+% If false, use "Liberation Sans".
+\IfFontExistsTF{Arial}{
+    \setsansfont{Arial}
+}{
+    % Fallback settings for Liberation Sans
+    \setsansfont{Liberation Sans}
+}
 % Notes:
 % - lmodern fills in main and monospace fonts if not explicitly set with fontspec.
 % - Comment lmodern if full fontspec control is preferred.
@@ -146,3 +153,55 @@
 % \usepackage{datapie}       % Pie charts.
 % \usepackage{afterpage}     % Command placement after page breaks.
 % \usepackage{wrapfig}       % Text wrapping around figures.
+
+%% SYSCOP specific packages
+\usepackage{optidef}
+\usepackage{stmaryrd}
+\usepackage{amsthm}   % | math, bmatrix etc
+\usepackage{amsfonts} % |
+
+%% useful commands
+\newcommand{\nz}{{n_{\text{z}}}}
+\newcommand{\Co}{{\mathbb{C}}}
+\newcommand{\tran}{^\top}
+\DeclareMathSymbol{\shortminus}{\mathbin}{AMSa}{"39}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+%\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\stagecost}{\ell}
+\newcommand{\stagecc}{\tilde{\ell}} 
+\newcommand{\tvfn}{\ell_\mathrm{f}}
+\newcommand{\statevec}{\mathbf{x}}
+\newcommand{\controlvec}{\mathbf{u}}
+\newcommand{\rlpi}{\pi^\theta}
+\newcommand{\clcpi}{\pi^\mathrm{clc}}
+
+\newcommand{\ind}[1]{{_{\textrm{\normalfont#1}}}}
+\newcommand{\diag}[1]{\text{\normalfont diag}\left( {#1} \right)}
+\newcommand{\upind}[1]{\ensuremath{{^{\textrm{\normalfont#1}}}}}
+
+\newcommand{\quot}[1]{``{#1}''}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\Set}[2]{\{\, #1 \mid #2 \,\}}
+\newcommand{\eye}{%
+    \text{\usefont{U}{bbold}{m}{n}1}%
+}
+\newcommand{\eyed}[1]{%
+    \eye_{#1}%
+}
+\DeclareRobustCommand{\zeros}{%
+    \text{\usefont{U}{bbold}{m}{n}0}%
+}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
