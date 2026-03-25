@@ -18,6 +18,8 @@
 
 \chapter{Theoretical Background}
 \label{Chapter::Theoretical_Background} % Outline text
+% Optionally set a different path for figures in this chapter. See settings+/variables.tex for details.
+\setfigpath{theory}
 This chapter provides background knowledge to understand the concepts in the thesis.
 
 % Background topics that are necessary to understand your thesis
@@ -99,8 +101,8 @@ This chapter provides background knowledge to understand the concepts in the the
     \subsection{Example of Figure}
     \begin{figure}[ht]
             \centering
-            \includegraphics[width=\textwidth]{theory/Pinhole-Camera-Model-Multiple-View-Geometry-in-Computer-Vision.pdf}
-            \caption[Mathematical model of a pinhole camera]{Mathematical model of a pinhole camera \cite{Multiple_View_Geometry_in_Computer_Vision}.}
+            \includegraphics[width=\textwidth]{\figpath some_image.pdf}
+            \caption{This is some image with left (a) and right (b) parts. \cite{Multiple_View_Geometry_in_Computer_Vision}.}
             \label{fig::Pinhole_Camera_Model}
         \end{figure}
     

@@ -32,7 +32,7 @@ you can use the docker image provided here.
 > in `settings+/settings.tex` to `Liberation Sans` or `Liberation Serif`.
 > Otherwise you get compilation errors. See [wiki](https://en.wikipedia.org/wiki/Liberation_fonts) for details.
 
-# WE NEED YOUR HELP:
+# WE NEED YOUR HELP (ToDo):
 - Cover: I find it unusual that the author's name is the smallest and about in the middle of the page. Suggestion: Name further up
 - Cover: No typographic separation (other than font size) is unusual. Suggestion: "Master's Thesis" in italics, title in bold.
 - Declaration: I am missing a title page or the title on p. 3, the (non-existent) title page would be page i.
