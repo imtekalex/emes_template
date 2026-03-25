@@ -1,11 +1,11 @@
-
 % --------------------------------------------------------------------------------
 % Document Class
 % --------------------------------------------------------------------------------
 % We are using KOMA-Script
 \documentclass[
+    % a5paper,  % A5 paper size
+    12pt,  % Font size 12pt for a4, 8 for a5
     twoside,  % Default value already set????
-    12pt,  % Font size 12pt
     numbers = noendperiod,  % Remove . in the header of a new chapter
     chapterprefix = true,
     bibliography = totoc,  % 
@@ -14,3 +14,6 @@
 ] {scrbook}
 
 \usepackage[subpreambles=true]{standalone}
+
+% \newcommand{\theBCOR}{15mm} % Binding correction for double-sided print layouts.
+% \newcommand{\theBCOR}{6mm} % Binding correction for double-sided print layouts.

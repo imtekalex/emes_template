@@ -72,40 +72,13 @@
 
     \begin{titlepage}
 
-        \newgeometry{left=2.5cm,right=2.5cm-1cm,top=2.5cm,bottom=1.5cm}
         \newcommand{\fold}{1cm}  % Define the size of glue fold
-
-        % ------------------------------------------------------------------------
-        % Text
-        % ------------------------------------------------------------------------
-        % \begin{center}
-
-            \parindent0pt
-            \setstretch{1.6}
-            \fontsize{24}{24}\sffamily
-                \@thesisType\\[2.2cm]
-
-            \fontsize{30}{30}\sffamily
-                \@thesisTitle\\[2.9cm]
-
-            \fontsize{14}{14}\sffamily
-                \@author\\[0.3cm]
-                \@submitDate\\
-
-        % \end{center}
-
-        % Footer moved from bottom of page to allow dynamic header size
-        \begin{tikzpicture}[remember picture,overlay]
-            \node[yshift=6cm, font=\fontsize{16}{16}\sffamily, % xshift=\fold,
-                  align=left] at (current page.south) {
-                \coverTitle
-            };
-        \end{tikzpicture}
+        \newgeometry{left=\fold+\theBCOR, right=\theBCOR, top=\theBCOR, bottom=\theBCOR}
 
         % ------------------------------------------------------------------------
         % University seal and logo. 
         % ------------------------------------------------------------------------
-        \begin{tikzpicture}[remember picture,overlay]
+        \begin{tikzpicture}[remember picture, overlay]
 
             % Four corner points of margins
             \coordinate (TL) at ([xshift=\fold + \theBCOR, yshift=-\theBCOR] current page.north west);
@@ -119,18 +92,18 @@
             % };
 
             % % Glue fold
-            % \node [anchor=north west,minimum width=1cm,minimum height=\paperheight, fill=black!25!white] (rect) at (current page.north west) {};
+            % \node [anchor=north west,minimum width=\fold,minimum height=\paperheight, fill=black!25!white] (rect) at (current page.north west) {};
 
-            % % Margin indicators 
+            % % Margin indicators
+            % \draw[blue!70!black,line width=0.1mm] (TL) -- (TR) -- (BR) -- (BL) -- (TL);
             % \draw[blue!70!black,line width=1mm] ([yshift=-1cm]TL) -- (TL) -- ([xshift=+1cm]TL);
             % \draw[blue!70!black,line width=1mm] ([xshift=-1cm]TR) -- (TR) -- ([yshift=-1cm]TR);
             % \draw[blue!70!black,line width=1mm] ([yshift=+1cm]BR) -- (BR) -- ([xshift=-1cm]BR);
             % \draw[blue!70!black,line width=1mm] ([xshift=+1cm]BL) -- (BL) -- ([yshift=+1cm]BL);
-            % \draw[blue!70!black,line width=0.1mm] (TL) -- (TR) -- (BR) -- (BL) -- (TL);
 
             % Layout content 0.075
             \node[opacity=0.05, anchor=north, xshift = 3.4cm, yshift = 2mm] at (TL) {
-                \includegraphics[height=0.675\paperheight]{cover/Uni_Siegel.pdf}
+                \includegraphics[height=0.675\paperheight]{cover/Uni_Siegel.eps}
             };
 
             % \node[anchor=south west, xshift = -1mm, yshift = -1mm] at (BL) {
@@ -138,11 +111,62 @@
             % };
 
             \node[anchor=south east, xshift = 1mm, yshift = -1.75mm] at (BR) {
-                \includegraphics[width=0.5\textwidth]{images/cover/Logo_Uni.pdf}
+                \includegraphics[width=0.5\textwidth]{images/cover/Logo_Uni.eps}
             };
 
             \node[anchor=north] at (current page.north) {};
 
+        \end{tikzpicture}
+
+        % ------------------------------------------------------------------------
+        % Text
+        % ------------------------------------------------------------------------
+        \parindent0pt
+        \setstretch{1.6}
+
+        % We are using tikz to align horizontally with the coverTitle below.
+        \begin{tikzpicture}[remember picture, overlay]
+            % Make outline visible with: draw, thick,
+            \node[anchor=north west] at ([yshift=-0.0318\textheight]TL) {
+                \hspace*{-0.01\textwidth}% shift right
+                \begin{minipage}{\textwidth-0.008\textwidth}
+                    \fontsize{0.0316\textheight}{0.038\textheight}\sffamily
+                    \@thesisType\\[0.0648\paperheight]
+
+                    \fontsize{0.0395\textheight}{0.0395\textheight}\sffamily
+                    \@thesisTitle\\[0.0874\paperheight]
+
+                    \fontsize{0.02106\textheight}{0.0281\textheight}\sffamily
+                    \@author\\
+                    \@submitDate\\
+                \end{minipage}
+            };
+        \end{tikzpicture}
+        
+        % Center coverTitle vertically between university seal and logo
+        \begin{tikzpicture}[remember picture, overlay]
+            % Make outline visible with: draw, thick,
+            \node[anchor=north west, minimum height=5.84cm] at ([yshift=6.75cm]BL) {
+                \hspace*{-0.01\textwidth}% shift right
+                \begin{minipage}{\textwidth-0.008\textwidth}
+                    \fontsize{0.01844\textheight}{0.01843\textheight}\sffamily
+                    \coverTitle
+                \end{minipage}
+            };
+        \end{tikzpicture}
+
+        % ------------------------------------------------------------------------
+        % Cover version number
+        % ------------------------------------------------------------------------
+        % Let's add a version number on the back of the cover page
+        \clearpage
+        \thispagestyle{empty}
+
+        \begin{tikzpicture}[remember picture, overlay]
+            \node[anchor=north west] at ([xshift=2mm, yshift=-2mm]current page.north west) {
+                \fontsize{10}{10}\ttfamily % Use monospaced font
+                \textcolor{lightgray}{\texttt{v1.1}}
+            };
         \end{tikzpicture}
 
     \end{titlepage}
