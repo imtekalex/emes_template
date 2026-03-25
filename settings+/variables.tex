@@ -1,4 +1,4 @@
-\makeatletter
+\makeatletter  % Allow "@" in command names for internal macros
 % ----------------------------------------------------------------------------
 % Custom Colors (RGB 0-255, rgb 0-1)
 % ----------------------------------------------------------------------------
@@ -63,4 +63,70 @@
     \@todo[#1]{#2}
     \vspace{-1mm}
 }
-\makeatother
+
+\makeatother  % End of "@" in command names
+
+% ----------------------------------------------------------------------------
+% Figure path utility
+% ----------------------------------------------------------------------------
+% This macro defines \figpath based on optional and required arguments.
+% Usage:
+%   \setfigpath{chapter}           → sets \figpath to \home/images/chapter/
+%   \setfigpath{chapter}{section}  → sets \figpath to \home/images/chapter/section/
+%
+% Example:
+%   \setfigpath{chapter1}
+%   \includegraphics{\figpath diagram.pdf}
+% ----------------------------------------------------------------------------
+\newcommand{\setfigpath}[2][]{%
+  \if\relax\detokenize{#1}\relax
+    \def\figpath{\home/images/#2/}%
+  \else
+    \def\figpath{\home/images/#1/#2/}%
+  \fi
+}
+
+% ----------------------------------------------------------------------------
+% Autoref name customization
+% ----------------------------------------------------------------------------
+\addto\extrasenglish{%
+    \renewcommand*{\figureautorefname}{Fig.}%
+    \renewcommand*{\tableautorefname}{Tab.}%
+    \renewcommand*{\equationautorefname}{Eq.}%
+    \renewcommand*{\chapterautorefname}{Ch.}%
+    \renewcommand*{\sectionautorefname}{Sec.}%
+    \renewcommand*{\subsectionautorefname}{Subsec.}%
+    \renewcommand*{\subsubsectionautorefname}{Subsubsec.}%
+}
+\addto\extrasngerman{%
+    \renewcommand*{\figureautorefname}{Abb.}
+    \renewcommand*{\tableautorefname}{Tab.}%
+    \renewcommand*{\equationautorefname}{Gl.}%
+    \renewcommand*{\chapterautorefname}{Kap.}%
+    \renewcommand*{\sectionautorefname}{Abs.}%
+    \renewcommand*{\subsectionautorefname}{Unterabs.}%
+    \renewcommand*{\subsubsectionautorefname}{Unterunterabs.}%
+}
+
+% ----------------------------------------------------------------------------
+% Gray headlines for incomplete chapters/sections
+% ----------------------------------------------------------------------------
+\newcommand{\graychapterstar}[1]{%
+  \chapter*{\texorpdfstring{\textcolor{gray}{#1}}{#1}}%
+}
+
+\newcommand{\graychapter}[1]{%
+  \chapter{\texorpdfstring{\textcolor{gray}{#1}}{#1}}%
+}
+
+\newcommand{\graysection}[1]{%
+  \section{\texorpdfstring{\textcolor{gray}{#1}}{#1}}%
+}
+
+\newcommand{\graysubsection}[1]{%
+  \subsection{\texorpdfstring{\textcolor{gray}{#1}}{#1}}%
+}
+
+\newcommand{\graysubsubsection}[1]{%
+  \subsubsection{\texorpdfstring{\textcolor{gray}{#1}}{#1}}%
+}
