@@ -5,7 +5,7 @@
 %                                                                                   %
 % Please note: We do not provide technical support for this template.               %
 % However, please feel free to contribute to this template on GitHub:               %
-% https://github.com/imtekalex/emes_template                                        %
+% https://github.com/emes-imtek/thesis_template                                     %
 %                                                                                   %
 % Authors: Alexander Richter, Till Steinmann, Andreas Reichenbach                   %
 % -----------------------------------------------------------------------------------
@@ -14,6 +14,12 @@
 
 % Document settings
 \input{settings+/docclass}
+% select chair
+\input{settings+/selectchair}
+% Supported chairs
+% EMES
+% SYSCOP
+\selectchair{EMES}
 \input{settings+/settings}  % Custom variables are located in settings+/variables.tex
 
 % -----------------------------------------------------------------------------------
@@ -27,7 +33,7 @@
 % English chair and thesis info
 % -----------------------------------------------------------------------------------
 \institute{IMTEK -- Department of Microsystems Engineering}
-\chair{Laboratory for Electrical Instrumentation and Embedded Systems}
+    \chair{Laboratory for Electrical Instrumentation and Embedded Systems}
 
 \thesisType{Master's Thesis}
 \thesisTitle{Creation of a \LaTeX~Template for\\Students to use for Their Thesis}
