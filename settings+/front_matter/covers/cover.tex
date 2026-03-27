@@ -138,6 +138,11 @@
 
                     \fontsize{0.02106\textheight}{0.0281\textheight}\sffamily
                     \@author\\
+                    \ifchair{SYSCOP}
+                    \\[0.005\paperheight]
+                    Examiner: \@firstExaminer\\
+                    Supervisor: \@supervisor\\[0.01\paperheight]
+                    \fi
                     \@submitDate\\
                 \end{minipage}
             };
