@@ -5,7 +5,7 @@
 %                                                                                   %
 % Please note: We do not provide technical support for this template.               %
 % However, please feel free to contribute to this template on GitHub:               %
-% https://github.com/imtekalex/emes_template                                        %
+% https://github.com/emes-imtek/thesis_template                                     %
 %                                                                                   %
 % Authors: Alexander Richter, Till Steinmann, Andreas Reichenbach                   %
 % -----------------------------------------------------------------------------------
@@ -14,6 +14,12 @@
 
 % Document settings
 \input{settings+/docclass}
+% select chair
+\input{settings+/selectchair}
+% Supported chairs
+% EMES
+% SYSCOP
+\selectchair{EMES}
 \input{settings+/settings}  % Custom variables are located in settings+/variables.tex
 
 % -----------------------------------------------------------------------------------
@@ -27,7 +33,10 @@
 % English chair and thesis info
 % -----------------------------------------------------------------------------------
 \institute{IMTEK -- Department of Microsystems Engineering}
-\chair{Laboratory for Electrical Instrumentation and Embedded Systems}
+\ifchair{EMES}
+    \chair{Laboratory for Electrical Instrumentation and Embedded Systems}\fi
+\ifchair{SYSCOP}
+    \chair{Systems Control and Optimization Laboratory}\fi
 
 \thesisType{Master's Thesis}
 \thesisTitle{Creation of a \LaTeX~Template for\\Students to use for Their Thesis}
@@ -35,9 +44,9 @@
 \editingTime{July 13, 2021 - March 10, 2022}
 
 % Examiners
-\firstExaminer{Prof. Dr. Stefan Rupitsch}
+\firstExaminer{Prof. Dr. Im Tek}
 \firstExaminerDepartment{IMTEK -- Department of Microsystems Engineering}
-\firstExaminerChair{Laboratory for Electrical Instrumentation and Embedded Systems}
+\firstExaminerChair{Laboratory for something that likely has a long title as well}
 
 \secondExaminer{Prof. Dr. Max Doe}
 \secondExaminerDepartment{IMTEK -- Department of Microsystems Engineering}
@@ -46,13 +55,16 @@
 % Supervisor
 \supervisor{M.Sc. Max Doe}
 \supervisorDepartment{IMTEK -- Department of Microsystems Engineering}
-\supervisorChair{Laboratory for Electrical Instrumentation and Embedded Systems}
+\supervisorChair{Laboratory for something that likely has a long title as well}
 
 % -----------------------------------------------------------------------------------
 % German chair and thesis info
 % -----------------------------------------------------------------------------------
-% \chair{Professur für Elektrische Messtechnik und Eingebettete Systeme}
 % \institute{IMTEK -- Institut für Mikrosystemtechnik}
+% \ifchair{EMES}
+%     \chair{Professur für Elektrische Messtechnik und Eingebettete Systeme}\fi
+% \ifchair{SYSCOP}
+%     \chair{Systems Control and Optimization Laboratory}\fi
 
 % \thesisType{Master Thesis}
 % \thesisTitle{Erstellung einer \LaTeX~Vorlage für\\
@@ -61,9 +73,9 @@
 % \editingTime{13. Juli 2021 - 10. März 2022}
 
 % % Examiners
-% \firstExaminer{Prof. Dr. Stefan Rupitsch}
+% \firstExaminer{Prof. Dr. Im Tek}
 % \firstExaminerDepartment{IMTEK -- Institut für Mikrosystemtechnik}
-% \firstExaminerChair{Professur für Elektrische Messtechnik und Eingebettete Systeme}
+% \firstExaminerChair{Professur für irgendwas mit sicherlich ziemlich langem titel}
 
 % \secondExaminer{Prof. Dr. Max Musterperson}
 % \secondExaminerDepartment{IMTEK -- Institut für Mikrosystemtechnik}
@@ -72,7 +84,7 @@
 % % Supervisor
 % \supervisor{M.Sc. Max Musterperson}
 % \supervisorDepartment{IMTEK -- Institut für Mikrosystemtechnik}
-% \supervisorChair{Professur für Elektrische Messtechnik und Eingebettete Systeme}
+% \supervisorChair{Professur für irgendwas mit sicherlich ziemlich langem titel}
 
 % -----------------------------------------------------------------------------------
 % Main document

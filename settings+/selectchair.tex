@@ -1,0 +1,19 @@
+\newif\ifEMES
+\newif\ifSYSCOP
+
+\makeatletter
+\newcommand{\selectchair}[1]{%
+  \EMESfalse
+  \SYSCOPfalse
+  \@ifundefined{if#1}{%
+    \PackageError{selectchair}{Unknown chair `#1'}%
+      {Supported chairs: EMES, SYSCOP}%
+  }{%
+    \csname #1true\endcsname
+  }%
+}
+\makeatother
+
+\newcommand{\ifchair}[1]{%
+  \csname if#1\endcsname
+}

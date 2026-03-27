@@ -13,6 +13,31 @@
 \label{Chapter::Introduction}
     This chapter outlines the motivation for this thesis in the field of electrical engineering. Possible problems that could be encountered during the development and evaluation process are also discussed.
 
+\ifchair{SYSCOP}
+    \section{SYSCOP specific notes}
+    Tips on \LaTeX~writing:
+    \begin{itemize}
+    \item Formulate your optimization problem as clear as possible. We recommend using \texttt{optidef} to define them in \LaTeX, for example:
+    \begin{mini!}
+        {x(\cdot),u(\cdot)}{\int_{0}^{T} \! L(t,x(t),u(t)) \, \mathrm{d}t + M(x(T)) \label{eq:nmpc_ocp_obj} }
+        {\label{eq:nmpc_ocp}}{}
+        \addConstraint{0}{= x(0)-\bar{x}_0  }
+        \addConstraint{ 0 }{= f(t,x(t),\dot{x}(t), u(t)) }
+        %	\addConstraint{ 0 }{= g(t,x(t), u(t)) \label{eq:ocp_eq}}
+        \addConstraint{ 0 }{\geq h(t,x(t),u(t)) \quad \text{for all } t \in [0,T]. \label{eq:ocp_ineq}}
+    \end{mini!}
+    \item NEVER use $ words $ in math mode!!!!!!!!!!
+    \item Embed equations nicely into your text. An example is an equation, like
+    \begin{equation}
+        x = 0,
+    \end{equation}
+    that has proper punctuation around it and is smoothly integrated into a sentence.
+    \item Tip: Use \verb|\newcommand{}| to define variables and common expressions. It is especially useful if the the notation might change later. See \verb|variables.tex| for examples
+    \item Examples for some of the commands defined in \verb|variables.tex| are: $ x\ind{ref}\in \R $, $ \norm{x} $, $ \abs{x} $, $ u\upind{ref}, \eye, \eyed{n\ind{x}}, \zeros $
+    \item For naming of variables in math mode use: \verb|\mathrm{}|, instead of $ simulation tolerance = $ use something like $ \varepsilon\ind{tol} $, instead of $ xref $, use $ x\ind{ref} $, etc..
+    \end{itemize}
+\fi
+
 \section{Motivation}
 \label{Section::Motivation}
     This Thesis targets a key topic of electrical engineering \cite{Piezoelectirc_Sensors_and_Actors}. SI-Units can be written its text as \SI{50}{\ms}. \gls{symb:Pi} \gls{VRBD} \gls{Biofouling}
