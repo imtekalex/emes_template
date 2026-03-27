@@ -102,6 +102,14 @@
 ]{biblatex}
 
 % ---------------------------------------------------------------------
+% Chair specific Packages — Automatically enabled via \selectchair
+% ---------------------------------------------------------------------
+\ifchair{SYSCOP}
+    \usepackage{optidef} % Package to write optimization problems
+    \usepackage{amsfonts} % extended set of fonts for use in mathematics
+\fi
+
+% ---------------------------------------------------------------------
 % Paths and Included Files
 % ---------------------------------------------------------------------
 % Fix paths for standalone compiling
